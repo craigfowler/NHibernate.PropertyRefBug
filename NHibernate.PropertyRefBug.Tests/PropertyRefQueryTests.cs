@@ -8,7 +8,7 @@ namespace NHibernate.PropertyRefBug.Tests;
 public class PropertyRefQueryTests
 {
     [Test]
-    public void QueryingForSomeDataWhichWasInsertedViaAdoShouldProvideExpectedResults()
+    public void QueryForDataWhichWasInsertedViaAdoUsingASubqueryShouldProvideExpectedResults()
     {
         using var sessionFactory = SessionFactoryCreator.GetSessionFactory();
         using var connection = AdoDbInitialiser.GetConnection();
@@ -27,7 +27,7 @@ public class PropertyRefQueryTests
     }
     
     [Test]
-    public void SimplerQueryForDataWhichWasInsertedViaAdoShouldProvideExpectedResults()
+    public void SimpleQueryForDataWhichWasInsertedViaAdoShouldProvideExpectedResults()
     {
         using var sessionFactory = SessionFactoryCreator.GetSessionFactory();
         using var connection = AdoDbInitialiser.GetConnection();

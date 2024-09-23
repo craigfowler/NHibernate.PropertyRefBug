@@ -11,12 +11,7 @@
         
         <many-to-one name="Order"
                      property-ref="UniqueId"
-                     cascade="None"
-                     update="false"
-                     insert="false"
                      not-found="ignore"
-                     formula="OrderId"
-                     not-null="false"
-                     outer-join="true" />
+                     column="OrderId" />
     </class>
 </hibernate-mapping>

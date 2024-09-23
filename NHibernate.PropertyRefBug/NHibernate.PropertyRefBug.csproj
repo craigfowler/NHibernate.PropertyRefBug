@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NhVersion Condition="'$(NhVersion)' == ''">5.5.2</NhVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NHibernate" Version="$(NhVersion)" />
+    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <EmbeddedResource Include="**\*.hbm.xml" />
+  </ItemGroup>
+
+</Project>

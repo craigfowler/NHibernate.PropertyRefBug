@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping default-cascade="save-update" assembly="NHibernate.PropertyRefBug" namespace="NHibernate.PropertyRefBug.Entities" xmlns="urn:nhibernate-mapping-2.2">
+    <class name="LineItem">
+        <id name="Id">
+            <generator class="identity" />
+        </id>
+        
+        <property name="ItemName" />
+        
+        <property name="Amount" />
+        
+        <many-to-one name="Order"
+                     property-ref="UniqueId"
+                     cascade="None"
+                     update="false"
+                     insert="false"
+                     not-found="ignore"
+                     formula="OrderId"
+                     not-null="false"
+                     outer-join="true" />
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping default-cascade="save-update" assembly="NHibernate.PropertyRefBug" namespace="NHibernate.PropertyRefBug.Entities" xmlns="urn:nhibernate-mapping-2.2">
+    <class name="Order" table="TheOrder">
+        <id name="Id">
+            <generator class="identity" />
+        </id>
+
+        <property name="CreatedDate" />
+
+        <property name="UniqueId" />
+    </class>
+</hibernate-mapping>

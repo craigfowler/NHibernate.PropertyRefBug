@@ -23,6 +23,15 @@ public class PropertyRefQueryTests
         var validOrders = session.Query<Order>().Where(x => x.CreatedDate > new DateTime(2024, 9, 10));
         var orderCount = session.Query<LineItem>().Count(x => validOrders.Any(y => y == x.Order));
         
+        // In v5.3.15 this test passes
+        // 
+        // In v5.3.16 this test fails because it returns a result of 2 and not 1.  That's occurred because the SQL WHERE generated for the EXISTS subquery is incorrect.
+        // It has entirely missed the criterion which relates LineItem to Order, so it's returning all line items without restriction.
+        // This failure reason for v5.3.16 seems to have been immediately fixed in v5.3.17, although it's still exhibiting the wrong behaviour in v5.3.17 (below).
+        //
+        // In v.5.3.17+ this test fails because it returns a result of 0 and not 1.  That's occurred because the SQL WHERE generated for the EXISTS subquery is incorrect,
+        // in a different manner to the above.  That's because it is trying to traverse the FK relationship using LineItem.OrderId and Order.Id, rather than
+        // LineItem.OrderId and Order.UniqueId.
         Assert.That(orderCount, Is.EqualTo(1));
     }
     

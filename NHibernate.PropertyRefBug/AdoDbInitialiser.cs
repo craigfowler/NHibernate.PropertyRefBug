@@ -22,9 +22,11 @@ CREATE TABLE LineItem (
 
     const string DataSql = @"
 INSERT INTO TheOrder (Id, UniqueId, CreatedDate)
-VALUES (1, '0ab92479-8a17-4dbc-9bef-ce4344940cec', '2024-09-19T12:10:00Z');
+VALUES (1, '0ab92479-8a17-4dbc-9bef-ce4344940cec', '2024-09-19T12:10:00Z'),
+       (2, '4ca17d84-97aa-489f-8701-302a3879a388', '2021-09-19T12:20:00Z');
 INSERT INTO LineItem(Id, OrderId, ItemName, Amount)
-VALUES(1, '0ab92479-8a17-4dbc-9bef-ce4344940cec', 'Bananas', 5);";
+VALUES(1, '0ab92479-8a17-4dbc-9bef-ce4344940cec', 'Bananas', 5),
+      (2, '4ca17d84-97aa-489f-8701-302a3879a388', 'Apples', 10);";
     
     public static void CreateSchema(IDbConnection connection)
     {
